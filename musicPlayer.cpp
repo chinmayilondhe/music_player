@@ -29,7 +29,32 @@ void add_node(struct node *first)
     // tofile(a);
     first->next = NULL;
 }
-
+void display()
+{
+    top1 = top;
+    if (top1 == NULL)
+    {
+        printf("\n\a\a\a\a=>NO recently played tracks.\n");
+        return;
+    }
+    printf("\n\a\a\a\a#Recently played tracks-\n");
+    while (top1 != NULL)
+    {
+        printf("%s", top1->song);
+        printf("\n");
+        top1 = top1->next;
+    }
+ }
+ void printlist(struct node *first)
+{
+    cout<<"\nPlaylist Name- ";
+    while(first->next!=NULL)
+    {
+        cout<<first->song<<endl;
+        first=first->next;
+    }
+    cout<<first->song<<endl;
+}
 
 
 main()
