@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 using namespace std;
 
 struct node
@@ -24,7 +23,7 @@ void add_node(struct node *first)
     first->prev = first;
     first = first->next;
     cout << "\n\a\a\a\aEnter Song name-  ";
-    cin>>a;
+    cin >> a;
     strcpy(first->song, a);
 
     first->next = NULL;
@@ -35,14 +34,14 @@ void display()
     top1 = top;
     if (top1 == NULL)
     {
-        cout<<"\n\a\a\a\a=>NO recently played tracks.\n";
+        cout << "\n\a\a\a\a=>NO recently played tracks.\n";
         return;
     }
-   cout<<"\n\a\a\a\a#Recently played tracks-\n";
+    cout << "\n\a\a\a\a#Recently played tracks-\n";
     while (top1 != NULL)
     {
-        cout<< top1->song << endl;
-        
+        cout << top1->song << endl;
+
         top1 = top1->next;
     }
 }
@@ -59,15 +58,15 @@ void printlist(struct node *first)
 
 void del_node(struct node *first)
 {
-    while((first->next)->next!=NULL)
+    while ((first->next)->next != NULL)
     {
-        first=first->next;
+        first = first->next;
     }
     struct node *temp;
-    temp=(first->next)->next;
-    first->next=NULL;
+    temp = (first->next)->next;
+    first->next = NULL;
     free(temp);
-   cout<<"Deleted"<<endl;
+    cout << "Deleted" << endl;
 }
 
 void del_search(struct node *start)
@@ -75,7 +74,7 @@ void del_search(struct node *start)
     char song[100];
     printlist(start);
     cout << "\n\a\a\a\aChoose song you wish to delete- ";
-    cin>>song;
+    cin >> song;
     int flag = 0;
     while (start != NULL)
     {
@@ -108,7 +107,7 @@ void search1(struct node *first)
 {
     char song[100];
     cout << "\n\a\a\a\aEnter song To be Searched- ";
-    cin>>song;
+    cin >> song;
     int flag = 0;
 
     while (first != NULL)
@@ -157,7 +156,7 @@ struct node *del_pos(struct node *pointer, int pos)
         pointer = pointer->next;
         pointer->prev = NULL;
         free(temp);
-        cout<<"\nThe list is updated\nUse the display function to check\n";
+        cout << "\nThe list is updated\nUse the display function to check\n";
         return pointer;
     }
     while (i < pos - 1)
@@ -176,7 +175,7 @@ struct node *del_pos(struct node *pointer, int pos)
         prev1->next = NULL;
 
         free(temp);
-        cout<<"\nThe list is updated\nUse the display function to check\n";
+        cout << "\nThe list is updated\nUse the display function to check\n";
     }
 
     else
@@ -186,7 +185,7 @@ struct node *del_pos(struct node *pointer, int pos)
         prev1->next = temp->next;
         temp->next->prev = prev1;
         free(temp);
-        cout<<"\nThe list is updated\nUse the display function to check\n";
+        cout << "\nThe list is updated\nUse the display function to check\n";
     }
 }
 void deletemenu(struct node *start)
@@ -202,7 +201,7 @@ void deletemenu(struct node *start)
     case 2:
         int pos;
         printf("\nEnter the pos of the song : ");
-      cin>>pos;
+        cin >> pos;
         del_pos(start, pos - 1);
         break;
     }
