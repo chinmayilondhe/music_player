@@ -108,6 +108,18 @@ void search1(struct node *first)
     }
 }
 
+void count_nodes(struct node *first)
+{
+    int i=0;
+    while (first->next!=NULL)
+    {
+        first=first->next;
+        i++;
+    }
+    i++;
+    cout<<"\nTotal songs-  "<<i-1<<endl;
+}
+
 struct node *del_pos(struct node *pointer, int pos)
 {
 
