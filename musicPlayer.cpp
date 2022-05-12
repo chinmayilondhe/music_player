@@ -82,6 +82,32 @@ void del_search(struct node *start)
     }
 }
 
+void search1(struct node *first)
+{
+    char song[100];
+    cout<<"\n\a\a\a\aEnter song To be Searched- ";
+    scanf("%s",&song);
+    int flag=0;
+
+    while(first!=NULL)
+    {
+        if(strcmp(first->song,song)==0)
+        {
+            cout<<"\n\a\a\a\a#Song Found"<<endl;
+            flag++;
+            break;
+        }
+        else
+        {
+            first=first->next;
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"\n\a\a\a\a#Song Not found"<<endl;
+    }
+}
+
 struct node *del_pos(struct node *pointer, int pos)
 {
 
