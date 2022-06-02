@@ -2,6 +2,10 @@
 #include<stdlib.h>
 #include<string.h>
 
+char temp[100];
+struct node*top=NULL;
+struct node*current_song=NULL;
+
 struct node{
     char data[100];
     struct node*next;
@@ -73,6 +77,69 @@ void show_song(){
         show_ptr=show_ptr->next;
     }while(show_ptr!=top);
 }
-char temp[100];
-struct node*top=NULL;
-struct node*current_song=NULL;
+
+void song_of_choice(){
+    if(top==NULL){
+        printf("The playlist is empty!!!\n");
+        return;
+    }
+    printf("Enter Song name you want to search:\n");
+    while((getchar())!='\n');
+    scanf("%[^\n]%*c",temp);
+    printf("\n");
+    struct node*ptr=top;
+    do{
+        if(strcmp(ptr->data,temp)==0){
+            printf("Song Found!\n");
+            printf("Playing Song : %s\n",ptr->data);
+            return;
+        }
+        ptr=ptr->next;
+    }while(ptr!=top);
+    printf("There is no Song file with this name!\n");
+}
+
+int main(){
+    int choice;
+    menu:
+    printf("\n__________WELCOME TO SPOTIFY__________\n");
+    printf("1. Add Song\n");
+    printf("2. Remove Song\n");
+    printf("3. Show playlist\n");
+    printf("4. Play next song\n");
+    printf("5. Play previous song\n");
+    printf("6. Play first song\n");
+    printf("7. Play last song\n");
+    printf("8. Play specific song\n");
+    printf("9. Exit\n\n");
+    scanf("%d",&choice);
+
+    if (choice == 1)
+        insert_new_song();
+
+    else if (choice == 2)
+        delete_song();
+
+    else if (choice == 3)
+        show_song();
+
+    else if (choice == 4)
+        next_song();
+
+    else if (choice == 5)
+        previous_song();
+
+    else if (choice == 6)
+        first_song();
+
+    else if (choice == 7)
+        last_song();
+
+    else if (choice == 8)
+        song_of_choice();
+    else
+        exit(0);
+
+        goto menu;
+return 0;
+}
